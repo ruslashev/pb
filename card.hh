@@ -15,14 +15,14 @@ union card
 {
 	struct
 	{
-		uint32_t pad      : 3;
-		uint32_t rank_bit : 13;
-		uint32_t suit     : 4;
-		uint32_t rank_val : 4;
-		uint32_t unused   : 2;
 		uint32_t prime    : 6;
+		uint32_t unused   : 2;
+		uint32_t rank     : 4;
+		uint32_t suit     : 4;
+		uint32_t rank_bit : 13;
+		uint32_t pad      : 3;
 	};
-	uint32_t raw;
+	uint32_t data;
 };
 static_assert(sizeof(card) == 4, "card must be 32 bits");
 
