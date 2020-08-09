@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 
 /* +--------+--------+--------+--------+
  * |xxxbbbbb|bbbbbbbb|cdhsrrrr|xxpppppp|
@@ -23,6 +24,8 @@ union card
 		uint32_t pad      : 3;
 	};
 	uint32_t data;
+
+	std::string show();
 };
 static_assert(sizeof(card) == 4, "card must be 32 bits");
 
