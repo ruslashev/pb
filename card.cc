@@ -37,7 +37,7 @@ static std::string suit_color_standard(uint32_t suit)
 	case spades:   return colors::black;
 	case hearts:
 	case diamonds: return colors::red;
-	default:       die("suit_color_standard: bad suit");
+	default:       die("suit_color_standard: bad suit " << suit);
 	}
 }
 
@@ -48,7 +48,7 @@ static std::string suit_color_4colors(uint32_t suit)
 	case hearts:   return colors::red;
 	case diamonds: return colors::blue;
 	case spades:   return colors::black;
-	default:       die("suit_color_4colors: bad suit");
+	default:       die("suit_color_4colors: bad suit " << suit);
 	}
 }
 
@@ -59,7 +59,7 @@ static std::string suit_to_string(uint32_t suit)
 	case hearts:   return "♥";
 	case diamonds: return "♦";
 	case spades:   return "♠";
-	default:       die("suit_to_string: bad suit");
+	default:       die("suit_to_string: bad suit " << suit);
 	}
 }
 
