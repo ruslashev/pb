@@ -1,6 +1,25 @@
 #include "card.hh"
 #include "macros.hh"
 
+card::card()
+{
+	data = 0;
+}
+
+card::card(uint32_t _data)
+{
+	data = _data;
+}
+
+card::card(uint32_t _rank, uint32_t _suit)
+{
+	data = 0;
+	rank = _rank;
+	prime = primes[rank];
+	suit = _suit;
+	rank_bit = 1 << rank;
+}
+
 namespace colors
 {
 static strlit reset    = "\x1b[0m";

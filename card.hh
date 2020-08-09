@@ -25,6 +25,9 @@ union card
 	};
 	uint32_t data;
 
+	card();
+	card(uint32_t _data);
+	card(uint32_t _rank, uint32_t _suit);
 	std::string show();
 };
 static_assert(sizeof(card) == 4, "card must be 32 bits");
