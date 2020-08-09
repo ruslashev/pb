@@ -1,7 +1,7 @@
-#include <iostream>
+#include "tests.hh"
 
 int main()
 {
-	std::cout << "hi" << std::endl;
+	tests_card_platform_test();
 }
 
