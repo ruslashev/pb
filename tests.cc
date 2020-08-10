@@ -1,5 +1,6 @@
 #include "tests.hh"
 #include "card.hh"
+#include "hand.hh"
 #include <cassert>
 #include <iostream>
 
@@ -19,5 +20,15 @@ void tests_card_platform_test()
 	assert(Fs.prime    == primes[five]);
 
 	std::cout << "card platform test: ok" << std::endl;
+}
+
+void tests_hand_evaluation()
+{
+	card deck[52];
+
+	init_deck(deck);
+
+	for (int i = 0; i < 52; ++i)
+		std::cout << deck[i].show() << std::endl;
 }
 
