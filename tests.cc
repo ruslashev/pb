@@ -5,8 +5,8 @@
 
 void tests_card_platform_test()
 {
-	card Kd ( 0b000'0100000000000'0100'1011'00'100101 );
-	card Fs ( 0b000'0000000001000'0001'0011'00'000111 );
+	card Kd = { .data = 0b000'0100000000000'0100'1011'00'100101 };
+	card Fs = { .data = 0b000'0000000001000'0001'0011'00'000111 };
 
 	assert(Kd.rank_bit == 1 << king);
 	assert(Kd.suit     == diamonds);

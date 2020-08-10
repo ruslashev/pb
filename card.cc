@@ -1,25 +1,6 @@
 #include "card.hh"
 #include "macros.hh"
 
-card::card()
-{
-	data = 0;
-}
-
-card::card(uint32_t _data)
-{
-	data = _data;
-}
-
-card::card(uint32_t _rank, uint32_t _suit)
-{
-	data = 0;
-	rank = _rank;
-	prime = primes[rank];
-	suit = _suit;
-	rank_bit = 1 << rank;
-}
-
 namespace colors
 {
 static strlit reset    = "\x1b[0m";
@@ -91,5 +72,14 @@ std::string card::show()
 	return (white_bg ? colors::white_bg : "")
 		+ (standard_colors ? suit_color_standard(suit) : suit_color_4colors(suit))
 		+ rank_to_string(rank) + suit_to_string(suit) + colors::reset;
+}
+
+void set_card(card *card, uint32_t rank, uint32_t suit)
+{
+	card->data = 0;
+	card->prime = primes[rank];
+	card->rank = rank;
+	card->suit = suit;
+	card->rank_bit = 1 << rank;
 }
 

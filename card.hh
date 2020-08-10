@@ -25,9 +25,6 @@ union card
 	};
 	uint32_t data;
 
-	card();
-	card(uint32_t _data);
-	card(uint32_t _rank, uint32_t _suit);
 	std::string show();
 };
 static_assert(sizeof(card) == 4, "card must be 32 bits");
@@ -72,4 +69,6 @@ static const int primes[] = {
 	[king]  = 37,
 	[ace]   = 41,
 };
+
+void set_card(card *card, uint32_t rank, uint32_t suit);
 
