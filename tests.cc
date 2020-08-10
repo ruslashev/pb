@@ -3,6 +3,7 @@
 #include "hand.hh"
 #include <cassert>
 #include <iostream>
+#include <chrono>
 
 void tests_card_platform_test()
 {
@@ -36,11 +37,14 @@ void tests_hand_evaluation()
 {
 	card deck[52], hand[5];
 	int freq[10];
+	std::chrono::duration<double> time_per_hand_rank[10];
 
 	init_deck(deck);
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 10; i++) {
 		freq[i] = 0;
+		time_per_hand_rank[i] = std::chrono::duration<double>::zero();
+	}
 
 	/* loop over every possible five-card hand */
 	for (int a = 0; a < 48; ++a) {
@@ -54,9 +58,13 @@ void tests_hand_evaluation()
 					for (int e = d + 1; e < 52; ++e) {
 						hand[4] = deck[e];
 
+						auto start = std::chrono::steady_clock::now();
 						value v = evalute_hand(hand);
+						auto end = std::chrono::steady_clock::now();
+
 						hand_rank r = get_hand_rank(v);
 						++freq[r];
+						time_per_hand_rank[r] += end - start;
 					}
 				}
 			}
@@ -69,5 +77,11 @@ void tests_hand_evaluation()
 		sum += freq[i];
 	}
 	printf("%15s: %8d\n", "Total", sum);
+	printf("\n");
+
+	std::cout << "Average evaluation time per hand rank (ns):" << std::endl;
+	for (int i = royal_flush; i <= high_card; ++i)
+		printf("%15s: %8.2f\n", hand_rank_str[i],
+				(time_per_hand_rank[i].count() / (double)freq[i]) * 1'000'000'000.0);
 }
 
