@@ -4,9 +4,9 @@
 #include "macros.hh"
 #include <string>
 
-enum value
+enum hand_rank
 {
-	invalid         = 0,
+	royal_flush     = 0,
 	straight_flush  = 1,
 	four_of_a_kind  = 2,
 	full_house      = 3,
@@ -18,8 +18,8 @@ enum value
 	high_card       = 9,
 };
 
-static strlit value_str[] = {
-	[invalid]         = "",
+static strlit hand_rank_str[] = {
+	[royal_flush]     = "Royal Flush",
 	[straight_flush]  = "Straight Flush",
 	[four_of_a_kind]  = "Four of a Kind",
 	[full_house]      = "Full House",
