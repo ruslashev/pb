@@ -23,19 +23,13 @@ int findit(uint32_t key)
 
 static value evalute_hand(card c1, card c2, card c3, card c4, card c5)
 {
-	uint32_t q;
+	unsigned q, prime_product;
 	value s;
 
-	uint32_t v1 = c1.data,
-	         v2 = c2.data,
-	         v3 = c3.data,
-	         v4 = c4.data,
-	         v5 = c5.data;
-
-	q = (v1 | v2 | v3 | v4 | v5) >> 16;
+	q = c1.rank_bit | c2.rank_bit | c3.rank_bit | c4.rank_bit | c5.rank_bit;
 
 	/* check for Flushes and StraightFlushes */
-	if (v1 & v2 & v3 & v4 & v5 & 0xF000)
+	if (c1.suit & c2.suit & c3.suit & c4.suit & c5.suit)
 		return flushes[q];
 
 	/* check for Straights and HighCard hands */
@@ -44,10 +38,9 @@ static value evalute_hand(card c1, card c2, card c3, card c4, card c5)
 		return s;
 
 	/* let's do it the hard way */
-	q = (v1 & 0xFF) * (v2 & 0xFF) * (v3 & 0xFF) * (v4 & 0xFF) * (v5 & 0xFF);
-	q = findit(q);
+	prime_product = c1.prime * c2.prime * c3.prime * c4.prime * c5.prime;
 
-	return values[q];
+	return values[findit(prime_product)];
 }
 
 value evalute_hand(card hand[5])
