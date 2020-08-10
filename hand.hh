@@ -2,6 +2,7 @@
 
 #include "card.hh"
 #include "macros.hh"
+#include "evaluator.hh"
 #include <string>
 
 enum hand_rank
@@ -33,4 +34,5 @@ static strlit hand_rank_str[] = {
 
 void init_deck(card deck[52]);
 std::string show_hand(card *deck, unsigned size);
+hand_rank get_hand_rank(value val);
 
