@@ -22,6 +22,16 @@ void tests_card_platform_test()
 	std::cout << "card platform test: ok" << std::endl;
 }
 
+void tests_show_deck()
+{
+	card deck[52];
+
+	init_deck(deck);
+
+	for (int i = 0; i < 52; i += 13)
+		std::cout << show_hand(deck + i, 13) << std::endl;
+}
+
 void tests_hand_evaluation()
 {
 	card deck[52], hand[5];
