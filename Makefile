@@ -2,7 +2,7 @@ cxx = g++
 cflags = -g -std=c++17 -Wall -Wextra
 bin = pb
 lflags = -static
-src = main.cc card.cc tests.cc hand.cc arrays.cc
+src = main.cc card.cc tests.cc hand.cc arrays.cc evaluator.cc
 builddir = .build
 obj = $(src:%.cc=$(builddir)/obj/%.o)
 deps = $(src:%.cc=$(builddir)/dep/%.d)
