@@ -8,3 +8,13 @@ void init_deck(card deck[52])
 			set_card(&deck[i++], rank, suit);
 }
 
+std::string show_hand(card *deck, unsigned size)
+{
+	std::string out = "";
+
+	for (unsigned i = 0; i < size - 1; ++i)
+		out += deck[i].show() + " ";
+
+	return out + deck[size - 1].show();
+}
+
