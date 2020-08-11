@@ -10,7 +10,7 @@ mb_unused static void do_tests()
 	tests_show_deck();
 	std::cout << std::endl;
 
-	tests_hand_evaluation();
+	tests_5hand_evaluation();
 }
 
 int main()

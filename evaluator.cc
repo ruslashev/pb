@@ -37,7 +37,7 @@ static value evalute_hand(card c1, card c2, card c3, card c4, card c5)
 	return hash_values[find_fast(prime_product)];
 }
 
-value evalute_hand(card hand[5])
+value eval_5hand(card hand[5])
 {
 	return evalute_hand(hand[0], hand[1], hand[2], hand[3], hand[4]);
 }

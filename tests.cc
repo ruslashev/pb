@@ -33,7 +33,7 @@ void tests_show_deck()
 		std::cout << show_hand(deck + i, 13) << std::endl;
 }
 
-void tests_hand_evaluation()
+void tests_5hand_evaluation()
 {
 	card deck[52], hand[5];
 	int freq[10];
@@ -62,7 +62,7 @@ void tests_hand_evaluation()
 							hand[4] = deck[e];
 
 							auto start = std::chrono::steady_clock::now();
-							value v = evalute_hand(hand);
+							value v = eval_5hand(hand);
 							auto end = std::chrono::steady_clock::now();
 
 							hand_rank r = get_hand_rank(v);

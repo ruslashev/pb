@@ -6,5 +6,5 @@ typedef uint16_t value;
 
 #include "hand.hh"
 
-value evalute_hand(card hand[5]);
+value eval_5hand(card hand[5]);
 
