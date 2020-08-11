@@ -1,7 +1,8 @@
 #include "tests.hh"
+#include "macros.hh"
 #include <iostream>
 
-int main()
+mb_unused static void do_tests()
 {
 	tests_card_platform_test();
 	std::cout << std::endl;
@@ -10,5 +11,10 @@ int main()
 	std::cout << std::endl;
 
 	tests_hand_evaluation();
+}
+
+int main()
+{
+	do_tests();
 }
 

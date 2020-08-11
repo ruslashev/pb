@@ -18,3 +18,5 @@ typedef const char * const strlit;
 		die("condition " << #Condition << " failed at " << __FILE__ << ":" << __LINE__); \
 	};
 
+#define mb_unused [[maybe_unused]]
+
