@@ -15,7 +15,7 @@ extern uint16_t flushes[];
  */
 extern uint16_t unique5[];
 
-extern uint32_t products[];
+extern uint16_t hash_adjust[];
 
-extern uint16_t values[];
+extern uint16_t hash_values[];
 

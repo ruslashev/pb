@@ -3,22 +3,17 @@
 #include "macros.hh"
 #include <iostream>
 
-/* perform a binary search on a pre-sorted array */
-int findit(uint32_t key)
+static unsigned find_fast(unsigned u)
 {
-	int low = 0, high = 4887, mid;
-
-	while (low <= high) {
-		mid = (high + low) >> 1;      // divide by two
-		if (key < products[mid])
-			high = mid - 1;
-		else if (key > products[mid])
-			low = mid + 1;
-		else
-			return mid;
-	}
-
-	die("findit: no match found for key = " << key);
+	unsigned a, b, r;
+	u += 0xe91aaa35;
+	u ^= u >> 16;
+	u += u << 8;
+	u ^= u >> 4;
+	b  = (u >> 8) & 0x1ff;
+	a  = (u + (u << 2)) >> 19;
+	r  = a ^ hash_adjust[b];
+	return r;
 }
 
 static value evalute_hand(card c1, card c2, card c3, card c4, card c5)
@@ -28,19 +23,18 @@ static value evalute_hand(card c1, card c2, card c3, card c4, card c5)
 
 	q = c1.rank_bit | c2.rank_bit | c3.rank_bit | c4.rank_bit | c5.rank_bit;
 
-	/* check for Flushes and StraightFlushes */
+	/* check for Flushes and Straight Flushes */
 	if (c1.suit & c2.suit & c3.suit & c4.suit & c5.suit)
 		return flushes[q];
 
-	/* check for Straights and HighCard hands */
+	/* check for Straights and High Cards */
 	s = unique5[q];
 	if (s)
 		return s;
 
-	/* let's do it the hard way */
 	prime_product = c1.prime * c2.prime * c3.prime * c4.prime * c5.prime;
 
-	return values[findit(prime_product)];
+	return hash_values[find_fast(prime_product)];
 }
 
 value evalute_hand(card hand[5])
