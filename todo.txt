@@ -1,0 +1,7 @@
+- count flush, straight, better draw outs
+- equity
+- can an opponent have a straight
+- info about our hand: top-mid-bot pair, overpair, overcards, full house possible, better outs
+- hand vs. random hand evaluation (how does my hand fare against a single random opponent?)
+- steal other featurs from Timmy’s PokerSim Library
+
